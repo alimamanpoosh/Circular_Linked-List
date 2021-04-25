@@ -1,6 +1,26 @@
 #include<iostream>
 using namespace std;
+Circular_linked_list(){
+            size = 0;
+            current = nullptr;
+        }
 
+        ~Circular_linked_list(){
+            if(current == nullptr){
+                return;
+            }
+
+            node * temp= current;
+            while(temp->getNext() != current){
+                node * tempForDelete = temp;
+                temp= temp->getNext();
+                delete tempForDelete;
+            }
+            delete temp;
+            temp = nullptr;
+            current = nullptr;
+            size = 0;
+        }
 class node{
     private:
         int data;
